@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">GerenciaNet | Invalidar sessão</ui:insert></title>
+	<h:outputScript name="jquery.js" library="primefaces/jquery"/>
+	<h:outputScript name="jquery-plugins.js" library="primefaces/jquery"/>
+	<h:outputScript name="jquery.cookie.js" library="javascript"/>
+	<h:outputScript name="jquery-ui.js" library="primefaces/jquery/ui"/>
+	<h:outputScript name="primefaces.js" library="primefaces"/>
+	<h:outputScript name="lquery.maskMoney.min.js" library="javascript"/>
+	<h:outputScript name="lquery.maskedinput.js" library="javascript"/>
+	<h:outputScript name="scripty.js" library="javascript"/>
+	
+	<h:outputStylesheet name="estilo.css" library="css"/>
+</h:head>
+	<h:form prependId="false" id="form">
+		<script type="text/javascript" charset="UTF-8">
+			$.noConflit(); /*Evitar conflito entre as bibliotecas*/
+		</script>
+		<h:body>
+			<div id="msgError">
+				<p:growl id="msg" showDetail="false" sticky="true" redisplay="true" autoUpdate="true" life="500"></p:growl>
+			</div>
+			<p:dialog header="Encerrar Sessão" widgetVar="dlg" resizable="false" modal="true" closable="false" width="250px">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="Login:"/>
+					<p:inputText id="username" required="true" label="username" requiredMessage="Informe o Login."/>
+					<br/>
+					<h:outputLabel  value=""/>
+					<h:outputLabel for="password" value="Senha:"/>
+					<p:password id="password" required="true" label="password" requiredMessage="Informe a Senha."/>
+					<br/>
+					<f:facet name="footer">
+						<p:commandButton value="Encerrar" style="height:40px; width:100px; background:#388FAB; color:#FFF; border:1px solid #ffffff"
+						update="form:msg" ajax="true" oncomplete="handleLoginRequest(xhr, status, args)"/>
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+		</h:body>
+		
+		<script>
+			$(function(){
+				PF('dlg').show();
+			})
+			
+			function handleLoginRequest(xhr, status, args) {
+				if (!args.loggedIn) {
+					PF('dlg').jq.effect("shake"), {times:5}, 100;
+				}else{
+					PF('dlg').hide();
+					logout('#{request.contextPath}');
+				}
+			}
+		</script>
+	</h:form>
+</html>
