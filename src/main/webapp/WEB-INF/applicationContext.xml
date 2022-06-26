@@ -115,9 +115,11 @@
 	
 	<bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/>
-	<bean  id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl"/>
+	
+	
 	
 	<!-- Controler -->
+	<bean  id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl"/>
 	<!-- 
 	<bean id="interfaceCrud" class="br.com.framework.implementacao.crud.ImplementacaoCrud" scope="singleton" lazy-init="false"/>
 	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
@@ -138,6 +140,7 @@
 	-->
 
 	<!-- Repository -->
+	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" />
 	<!--
 	<bean id="repositoryEntidade" class="br.com.dao.implementacao.DaoEntidade" />
 	<bean id="repositoryCidade" class="br.com.dao.implementacao.DaoCidade" />
@@ -149,7 +152,6 @@
 	<bean id="repositoryEmpreendimento" class="br.com.dao.implementacao.DaoEmpreendimento" />
 	<bean id="repositoryEntidadeEntidade" class="br.com.dao.implementacao.DaoEntidadeEntidade" />
 	<bean id="repositoryTitulo" class="br.com.dao.implementacao.DaoTitulo" />
-	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" />
 	<bean id="repositoryComissaoFuncionarioFilial" class="br.com.dao.implementacao.DaoComissaoFuncionarioFilial" />
 	-->
 
