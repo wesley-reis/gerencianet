@@ -29,14 +29,15 @@
 			<p:dialog header="Encerrar Sessão" widgetVar="dlg" resizable="false" modal="true" closable="false" width="250px">
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="username" value="Login:"/>
-					<p:inputText id="username" required="true" label="username" requiredMessage="Informe o Login." style="padding: 10px;"/>
+					<p:inputText id="username" required="true" label="username" value="#{loginBeanView.username}" requiredMessage="Informe o Login." style="padding: 10px;"/>
 					<br/>
 					<h:outputLabel  value=""/>
 					<h:outputLabel for="password" value="Senha:"/>
-					<p:password id="password" required="true" label="password" requiredMessage="Informe a Senha." style="padding: 10px;"/>
+					<p:password id="password" required="true" label="password" value="#{loginBeanView.password}" requiredMessage="Informe a Senha." style="padding: 10px;"/>
 					<br/>
 					<f:facet name="footer">
 						<p:commandButton value="Encerrar" style="height:40px; width:100px; background:#388FAB; color:#FFF; border:1px solid #ffffff"
+						actionListener="#{loginBeanView.invalidar()}"
 						update="form:msg" ajax="true" oncomplete="handleLoginRequest(xhr, status, args)"/>
 					</f:facet>
 				</h:panelGrid>
