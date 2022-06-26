@@ -156,6 +156,7 @@
 	-->
 
 	<!-- Services -->
+	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" />
 	<!-- <bean id="srvEntidade" class="br.com.srv.implementacao.SrvEntidadeImpl" /> 
 	<bean id="srvCidade" class="br.com.srv.implementacao.SrvCidadeImpl" />
 	<bean id="srvBairro" class="br.com.srv.implementacao.SrvBairroImpl" />
@@ -166,7 +167,6 @@
 	<bean id="srvEmpreendimento" class="br.com.srv.implementacao.SrvEmpreendimentoImpl" />
 	<bean id="srvEntidadeEntidade" class="br.com.srv.implementacao.SrvEntidadeEntidadeImpl" />
 	<bean id="srvTitulo" class="br.com.srv.implementacao.SrvTituloImpl" />
-	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" />
 	<bean id="srvComissaoFuncionarioFilial" class="br.com.srv.implementacao.SrvComissaoFuncionarioFilialImpl" />
 	<bean id="srvImpressaoApplet" class="br.com.srv.implementacao.SrvImpressaoAppletImpl" />
 
