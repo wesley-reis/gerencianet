@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.interfac.crud.InterfaceCrud;
+import br.com.project.classes.Entidade;
 
 @SuppressWarnings({ "unchecked" })
 @Component
@@ -36,7 +37,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	protected SimpleJdbcClassImpl simpleJdbcClassImpl;
 
 
-	// =========================================TEMPLATES DE OPERAÇÕES DE CRUD
+	// =========================================TEMPLATES DE OPERAï¿½ï¿½ES DE CRUD
 	// EM JDBC
 	// SPRING==============================================================
 	public JdbcTemplateImpl getJdbcTemplate() {
@@ -345,7 +346,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	/**
-	 * Retorna sessão corrente
+	 * Retorna sessï¿½o corrente
 	 */
 	@Override
 	public Session getSession() {
@@ -468,7 +469,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	/**
-	 * Limpa a sessão corrente
+	 * Limpa a sessï¿½o corrente
 	 */
 	@Override
 	public void clearSession() {
@@ -476,7 +477,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	/**
-	 * Inicia a sessão caso não exista
+	 * Inicia a sessï¿½o caso nï¿½o exista
 	 */
 	private void validaSessionFactory() {
 		if (sessionFactory == null) {
@@ -514,6 +515,17 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		validaSessionFactory();
 		Query queryReturn = sessionFactory.getCurrentSession().createQuery(query.toString());
 		return queryReturn;
+	}
+
+	public T findUniqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception {
+		validaSessionFactory();
+		StringBuilder query = new StringBuilder();
+		
+		query.append(" select entity from ").append(entidade.getSimpleName())
+		.append(" entity where entity.").append(atributo).append(" = '").append(valor).append("' ").append(condicao);
+		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
+		
+		return obj;
 	}
 
 }

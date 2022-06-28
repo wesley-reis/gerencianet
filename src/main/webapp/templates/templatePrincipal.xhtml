@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:p="http://primefaces.org/ui">
+
+<sec:isAuthenticated>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title><ui:insert name="titulo">GerenciaNet</ui:insert></title>
+		
+		<h:outputScript name="primefaces.js" library="primefaces"/>
+		<h:outputScript name="jquery.js" library="primefaces/jquery"/>
+		<h:outputScript name="jquery-plugins.js" library="primefaces/jquery"/>
+		<h:outputScript name="jquery.cookie.js" library="javascript"/>
+		<h:outputScript name="jquery-ui.js" library="primefaces/jquery/ui"/>
+		<h:outputScript name="primefaces.css" library="primefaces"/>
+		<h:outputScript name="lquery.maskMoney.min.js" library="javascript"/>
+		<h:outputScript name="lquery.maskedinput.js" library="javascript"/>
+		<h:outputScript name="scripty.js" library="javascript"/>
+		<h:outputScript name="jsf.js" library="javax.faces"/>		
+		<h:outputScript name="googlechart.js" library="javascript"/>
+		<h:outputScript name="deployJava.js" library="javascript"/>
+	</h:head>
+	<h:form id="formTemplate" prependId="false">
+		<h:outputStylesheet name="estilo.css" library="css"/>
+		<h:body>
+			<script type="text/javascript" charset="UTF-8">
+				$.noConflit();
+							
+				/*Bloqueia tecla F5*/
+				$(document).keydown(function(e){
+					if (e.which == 116){
+						return 116;
+					}
+				})
+			</script>
+			<ui:include src="/templates/barraProgresso.xhtml"/>
+			<div id="msgError">
+				<p:growl id="msg" showDetail="false" sticky="true" autoUpdate="true" life="6000"/>
+				<p:tooltip id="toolTipFocus" globalSelector="a, :input, :button"
+				showEvent="focus" hideEvent="blur"/>
+			</div>
+			
+			<div id="container">
+				<div id="topo">
+					<span style="position:absolute; left: 20px; top:14px; display:flex; justify-content:center; align-items:center; gap:10px;" id="spanLogo">
+						<h:graphicImage library="img" name="cloud.png" id="logoImg" width="60"/>
+						<h:outputLabel style="font-size:24px; color:#6F2FDE">Gerencia<b style="font-size:24px; color:#6F2FDE">Net</b></h:outputLabel>
+					</span>
+					<span id="dadoslogin">
+						Usuário: #{entidadeBeanView.getUsuarioLogadoSecurity()}
+						<br id="quebraUser"/>
+						Último login:
+						<h:outputLabel value="#{entidadeBeanView.ultimoAcesso()}" id="saidaultimoAcesso">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="America/Sao_Paulo"/>
+						</h:outputLabel>
+					</span>
+				</div>
+			</div>
+						
+		</h:body>
+	</h:form>
+</sec:isAuthenticated>
+
+</html>
