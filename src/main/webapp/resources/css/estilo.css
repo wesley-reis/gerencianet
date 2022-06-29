@@ -68,7 +68,7 @@ a:focus {
 #menupop {
 	position: absolute;
 	border: 1px solid #61cded;
-	top: 63px;
+	top: 74px;
 	right: 25px;
 	height: 30px;
 	width: 150px;
@@ -188,27 +188,19 @@ a:focus {
 }
 
 #iniciarmenu {
-	border: 1px solid gray;
-	background-color: white;
-	margin-top: 4px;
-	margin-left: 9px;
-	padding: 3px 10px 6px 20px;
-	width: 68px;
-	height: 12px;
-	display: block;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	font-face: sans-serif;
+	display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 3px 10px 6px 20px;
 	font-size: 13px;
-	cursor: pointer;
-	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);
+	
 }
 
 #iniciarmenu #imageminiciarmenu {
 	margin-left: -14px;
 	display: inline-block;
-	float: left;
 }
 
 #barramenu {
@@ -255,7 +247,6 @@ a:focus {
 }
 
 #dadoslogin {
-	background: #61cded;
 	background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),
 		rgba(255, 255, 255, 0) );
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3),
@@ -268,16 +259,17 @@ a:focus {
 		rgba(255, 255, 255, 0) );
 	position: absolute;
 	right: 20px;
-	top: 14px;
+	top: 30px;
 	width: 200px;
 	padding: 4px;
-	background-color: #61c0e0;
+	background-color: #63B6E6;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 	-moz-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
 	-webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
 	box-shadow: 0 2px 0 rgba(0, 0, 0, .3);
+	gap:8px;
 }
 
 .ui-growl {

@@ -20,10 +20,10 @@
 		<h:outputScript name="primefaces.css" library="primefaces"/>
 		<h:outputScript name="lquery.maskMoney.min.js" library="javascript"/>
 		<h:outputScript name="lquery.maskedinput.js" library="javascript"/>
-		<h:outputScript name="scripty.js" library="javascript"/>
 		<h:outputScript name="jsf.js" library="javax.faces"/>		
 		<h:outputScript name="googlechart.js" library="javascript"/>
 		<h:outputScript name="deployJava.js" library="javascript"/>
+		<h:outputScript name="scripty.js" library="javascript"/>
 	</h:head>
 	<h:form id="formTemplate" prependId="false">
 		<h:outputStylesheet name="estilo.css" library="css"/>
@@ -66,7 +66,7 @@
 						<a href="#" onclick="javascript:logout('#{request.contextPath}')" style="color:#CF1E27;">Sair</a>
 					</span>
 					
-					<span id="menuSistema" style="position:absolute; right:25px; top:48px; width:20px;">
+					<span id="menuSistema" style="position:absolute; right:25px; top:60px; width:20px;">
 						<a href="#" onblur="abrirMenupop();">
 							<h:graphicImage library="img" name="setabaixo.png" width="20" id="imagemSetaBaixo"/>
 						</a>
@@ -74,7 +74,7 @@
 				</div>
 				
 				<div id="menu">
-					<span id="iniciarmenu">
+					<span id="iniciarmenu">Menu
 						<h:graphicImage library="img" name="iconemenu.png" width="20" id="iconemenu"/>
 					</span>
 				</div>
@@ -83,8 +83,7 @@
 					<ui:insert name="corpo"/>
 				</div>
 				
-				<div id="menupop">
-				
+				<div id="menupop">				
 					<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ECESSAR, ADMIN">
 						<p:commandLink actionListener="#{mensagemBeanView.novo()}"
 						onsuccess="enviarMsgDialog.show();"
@@ -104,7 +103,7 @@
 					<p:tieredMenu id="menuEsquerdo" style="width:185px; border:none; background:none; color:#000;">
 						<p:menuitem onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal')"  value="Início" id="menuinicio" ajax="true"/>
 						
-            			<p:menuitem onclick="javascript:logout('#{request.contextPath}')" value="Sair" id="menusair" ajax="true"/>
+            			<p:menuitem onclick="javascript:logout('#{request.contextPath}')" style="color:#CF1E27;" value="Sair" id="menusair" ajax="true"/>
 					</p:tieredMenu>
 				</div>
 				

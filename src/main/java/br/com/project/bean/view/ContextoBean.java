@@ -12,9 +12,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import br.com.project.classes.Entidade;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.geral.controller.SessionController;
+import br.com.project.model.classes.Entidade;
 
 
 @Scope(value = "session")

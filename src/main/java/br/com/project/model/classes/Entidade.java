@@ -1,4 +1,4 @@
-package br.com.project.classes;
+package br.com.project.model.classes;
 
 import java.io.Serializable;
 import java.util.Date;

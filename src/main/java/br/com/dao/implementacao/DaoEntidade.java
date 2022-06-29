@@ -6,7 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import br.com.framework.implementacao.crud.ImplementacaoCrud;
-import br.com.project.classes.Entidade;
+import br.com.project.model.classes.Entidade;
 import br.com.repository.interfaces.RepositoryEntidade;
 
 @Repository

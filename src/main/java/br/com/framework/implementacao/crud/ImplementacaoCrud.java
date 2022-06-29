@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.interfac.crud.InterfaceCrud;
-import br.com.project.classes.Entidade;
+import br.com.project.model.classes.Entidade;
 
 @SuppressWarnings({ "unchecked" })
 @Component

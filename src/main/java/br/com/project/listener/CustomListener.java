@@ -6,8 +6,8 @@ import org.hibernate.envers.RevisionListener;
 import org.springframework.stereotype.Service;
 
 import br.com.framework.utils.UtilFramework;
-import br.com.project.classes.Entidade;
-import br.com.project.classes.InformacaoRevisao;
+import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.InformacaoRevisao;
 
 @Service
 public class CustomListener implements RevisionListener, Serializable{

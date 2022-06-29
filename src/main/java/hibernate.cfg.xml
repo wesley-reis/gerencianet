@@ -22,12 +22,12 @@
 		<property name="hibernate.connection.pool_size">50</property>   
 		
 
-		<mapping class="br.com.project.classes.Entidade" />
-		
-		<!-- <mapping class="br.com.project.model.classes.Filial" />
+		<mapping class="br.com.project.model.classes.Entidade" />
 		<mapping class="br.com.project.model.classes.Pais" />
 		<mapping class="br.com.project.model.classes.Estado" />
 		<mapping class="br.com.project.model.classes.Cidade" />
+		
+		<!-- <mapping class="br.com.project.model.classes.Filial" />
 		<mapping class="br.com.project.model.classes.Bairro" />
 		<mapping class="br.com.project.model.classes.Mensagem" />
 		<mapping class="br.com.project.model.classes.Produto" />

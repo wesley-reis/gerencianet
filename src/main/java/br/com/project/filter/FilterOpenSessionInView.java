@@ -21,8 +21,8 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.utils.UtilFramework;
-import br.com.project.classes.Entidade;
 import br.com.project.listener.ContextLoaderListenerCaixaKiUtils;
+import br.com.project.model.classes.Entidade;
 
 @WebFilter(filterName = "conexaoFilter")
 public class FilterOpenSessionInView extends DelegatingFilterProxy implements Serializable{
@@ -32,7 +32,7 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements Se
 	private static SessionFactory sf;
 	
 	// executa apenas uma vez
-	//executa quando a aplicação está sendo iniciada
+	//executa quando a aplicaï¿½ï¿½o estï¿½ sendo iniciada
 	@Override
 	protected void initFilterBean() throws ServletException {
 		sf = HibernateUtil.getSessionFactory();
@@ -50,9 +50,9 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements Se
 		
 		
 		try {
-			request.setCharacterEncoding("UTF-8"); // Define codificação
+			request.setCharacterEncoding("UTF-8"); // Define codificaï¿½ï¿½o
 			
-			// Captura usuário que faz a operação
+			// Captura usuï¿½rio que faz a operaï¿½ï¿½o
 			HttpServletRequest request2 = (HttpServletRequest) request;
 			HttpSession sessao = request2.getSession();
 			Entidade userLogadoSessao = (Entidade) sessao.getAttribute("userLogadoSessao");
@@ -63,10 +63,10 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements Se
 			
 			sf.getCurrentSession().beginTransaction();
 			
-			// antes de executar ação (Request)
-			chain.doFilter(request, response); // executa nossa ação no servidor
+			// antes de executar aï¿½ï¿½o (Request)
+			chain.doFilter(request, response); // executa nossa aï¿½ï¿½o no servidor
 			
-			//após executar ação (Resposta)
+			//apï¿½s executar aï¿½ï¿½o (Resposta)
 			
 			transactionManager.commit(status);
 			
