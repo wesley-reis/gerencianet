@@ -47,6 +47,15 @@ a:focus {
 	font-size: 14px;
 }
 
+.estiloIdCadastro {
+	padding: 10px 8px;
+	width: 100px;
+}
+
+.input{
+	padding: 10px 8px;
+}
+
 #topo {
 	position: absolute;
 	top: 0px;
@@ -195,6 +204,7 @@ a:focus {
     cursor: pointer;
     padding: 3px 10px 6px 20px;
 	font-size: 13px;
+	width: 60px;
 	
 }
 
