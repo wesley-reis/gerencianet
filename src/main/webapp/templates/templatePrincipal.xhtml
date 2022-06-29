@@ -29,7 +29,11 @@
 		<h:outputStylesheet name="estilo.css" library="css"/>
 		<h:body>
 			<script type="text/javascript" charset="UTF-8">
-				$.noConflit();
+				$.noConflict();
+				
+				localeData_pt_br();
+				initTamplete();
+				ocultarMenu();
 							
 				/*Bloqueia tecla F5*/
 				$(document).keydown(function(e){
@@ -122,6 +126,9 @@
 			$('#menupop').hide();
 		</script>
 	</h:form>
+	<script type="text/javascript" charset="UTF-8">
+		carregarIdElementosPagina();
+	</script>
 </sec:isAuthenticated>
 
 </html>
