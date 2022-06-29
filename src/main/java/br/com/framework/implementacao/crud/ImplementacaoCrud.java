@@ -522,7 +522,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		StringBuilder query = new StringBuilder();
 		
 		query.append(" select entity from ").append(entidade.getSimpleName())
-		.append(" entity where entity.").append(atributo).append(" = '").append(valor).append("' ").append(condicao);
+		.append(" entity where entity.").append(atributo)
+		.append(" = '").append(valor).append("'").append(condicao);
+		
 		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
 		
 		return obj;

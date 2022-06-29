@@ -1,6 +1,7 @@
 package br.com.project.geral.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,9 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 
 	private static final long serialVersionUID = 1L;
 	
-	public Entidade findUserLogado(String userlogado) throws Exception{
-		return super.findUniqueByProperty(Entidade.class, userlogado, "ent_login", " and entity.ent_inativo is false");
+	public Entidade findUserLogado(String userLogado) throws Exception{
+		
+		return super.findUninqueByProperty(Entidade.class, userLogado, "ent_login", " and entity.ent_inativo is false ");
 	}
 	
 	

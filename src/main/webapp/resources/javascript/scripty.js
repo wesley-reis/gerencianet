@@ -15,7 +15,7 @@ function reloadPage() {
 
 function validaDescricao(descricao) {
 	if (descricao === ' ' || descricao.trim() === '') {
-		return "Descrição não foi informada.";
+		return "Descriï¿½ï¿½o nï¿½o foi informada.";
 	}
 	 else {
 		return descricao;
@@ -170,29 +170,29 @@ function ocultarMenu() {
 		PrimeFaces.locales['pt'] = {
 			closeText : 'Fechar',
 			prevText : 'Anterior',
-			nextText : 'Próximo',
-			currentText : 'Começo',
+			nextText : 'Prï¿½ximo',
+			currentText : 'Comeï¿½o',
 			monthNames : [ 'Janeiro', 'Fevereiro', 'Marcio', 'Abril', 'Maio',
 					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
 					'Dezembro' ],
 			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul',
 					'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
-					'Sexta', 'Sábado' ],
-			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terï¿½a', 'Quarta', 'Quinta',
+					'Sexta', 'Sï¿½bado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sï¿½b' ],
 			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
 			weekHeader : 'Semana',
 			firstDay : 0,
 			isRTL : false,
 			showMonthAfterYear : false,
 			yearSuffix : '',
-			timeOnlyTitle : 'São Horas',
+			timeOnlyTitle : 'Sï¿½o Horas',
 			timeText : 'Tempo',
 			hourText : 'Hora',
 			minuteText : 'Minuto',
 			secondText : 'Segundo',
 			ampm : false,
-			month : 'Mês',
+			month : 'Mï¿½s',
 			week : 'Semana',
 			day : 'Dia',
 			allDayText : 'Todo o Dia'
@@ -883,10 +883,10 @@ function copiarValorFantasiaRazao(campo) {
 function confirmaLeituraMsg(men_codigo) {
 	
 	 $.get("confirmaLeituraMsg?men_codigo=" + men_codigo, function(resposta) {
-		 // alguma ação aqui se precisar
+		 // alguma aï¿½ï¿½o aqui se precisar
 		 reloadPage();
 		}).fail(function() {
-		    alert( "Erro ao enviar confirmação de leitura da mensagem." );
+		    alert( "Erro ao enviar confirmaï¿½ï¿½o de leitura da mensagem." );
 		});
 	
 }
@@ -902,19 +902,19 @@ function gerenciaTeclaEnter() {
 		});
 
 		$('input[type=text]').keydown(function(e) {
-			// Obter o próximo índice do elemento de entrada de texto
+			// Obter o prï¿½ximo ï¿½ndice do elemento de entrada de texto
 			var next_idx = $('input[type=text]').index(this) + 1;
 
-			// Obter o número de elemento de entrada de texto em um documento html
+			// Obter o nï¿½mero de elemento de entrada de texto em um documento html
 			var tot_idx = $('body').find('input[type=text]').length;
 
-			// Entra na tecla no código ASCII
+			// Entra na tecla no cï¿½digo ASCII
 			if (e.keyCode === 13) {
 				if (tot_idx === next_idx)
-					// Vá para o primeiro elemento de texto
+					// Vï¿½ para o primeiro elemento de texto
 					$('input[type=text]:eq(0)').focus();
 				else
-					// Vá para o elemento de entrada de texto seguinte
+					// Vï¿½ para o elemento de entrada de texto seguinte
 					$('input[type=text]:eq(' + next_idx + ')').focus();
 			}
 		});
@@ -988,7 +988,7 @@ function invocaApplet(context) {
 	
 	   //Faz algo com ajax...
 	    
-		var url = context + "/applet/imprimir.jsp?impressoraImprimir=" + null;// passando null para pegar a padrão
+		var url = context + "/applet/imprimir.jsp?impressoraImprimir=" + null;// passando null para pegar a padrï¿½o
 		
 		var title = "Imprimindo...";
 		var w = "150"; 
