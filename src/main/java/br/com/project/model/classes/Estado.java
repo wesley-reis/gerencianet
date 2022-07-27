@@ -42,11 +42,11 @@ public class Estado implements Serializable{
 	private Long est_id;
 	
 	@Column(length = 10, nullable = true)
-	private Long est_uf;
+	private String est_uf;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "est_nome", principal = 1)
 	@Column(length = 100, nullable = false)
-	private Long est_nome;
+	private String est_nome;
 	
 	
 	@NotAudited
@@ -72,19 +72,19 @@ public class Estado implements Serializable{
 		this.est_id = est_id;
 	}
 
-	public Long getEst_uf() {
+	public String getEst_uf() {
 		return est_uf;
 	}
 
-	public void setEst_uf(Long est_uf) {
+	public void setEst_uf(String est_uf) {
 		this.est_uf = est_uf;
 	}
 
-	public Long getEst_nome() {
+	public String getEst_nome() {
 		return est_nome;
 	}
 
-	public void setEst_nome(Long est_nome) {
+	public void setEst_nome(String est_nome) {
 		this.est_nome = est_nome;
 	}
 

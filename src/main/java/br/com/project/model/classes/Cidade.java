@@ -1,7 +1,6 @@
 package br.com.project.model.classes;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -83,7 +82,11 @@ public class Cidade implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cid_codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((cid_codigo == null) ? 0 : cid_codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -95,7 +98,12 @@ public class Cidade implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cidade other = (Cidade) obj;
-		return Objects.equals(cid_codigo, other.cid_codigo);
+		if (cid_codigo == null) {
+			if (other.cid_codigo != null)
+				return false;
+		} else if (!cid_codigo.equals(other.cid_codigo))
+			return false;
+		return true;
 	}
 
 	@Override
