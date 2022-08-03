@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class SimpleJdbcClassImpl extends SimpleJdbcCall implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	public SimpleJdbcClassImpl(DataSource dataSource) {
 		super(dataSource);
 	}

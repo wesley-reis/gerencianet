@@ -9,38 +9,45 @@
 	xmlns:util="http://java.sun.com/jsf/composite/components"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:composition template="/templates/templatePrincipal.xhtml">
-		<ui:define name="corpo">
-			<h:form id="formCadastro" prependId="false">
-				<c:set var="isCadastro" value="true" scope="view"/>
-				<p:panel header="Cadastro de cidade" id="panelCadastroCidade">
-					<h:panelGrid id="gridCidade" columns="3">
-						<h:outputLabel for="id" value="Código:" id="labelId"/>
-						<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
-						<h:outputLabel value=""/>
-							
-						
-						<h:outputLabel for="cidadeNome" value="Nome *:" id="labelNomeConsultaCidade"/>
-						<p:inputText id="cidadeNome" required="true" maxlength="100" requiredMessage="Informe o nome da cidade." 
-							styleClass="input" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"/>
-						<p:message for="cidadeNome"/>
-										
-						<h:outputLabel for="selectEstado" value="Estado *:" id="labelEstado" />	
-						<p:selectOneMenu id="selectEstado" required="false" requiredMessage="Informe o estado."
-							value="#{cidadeBeanView.objetoSelecionado.estado}">
-							<f:selectItems value="#{estadoBeanView.estados}"/>
-						</p:selectOneMenu>
-						<h:outputLabel value=""/>
-										
-						
-						
-					</h:panelGrid>
-				</p:panel>
-				
-				<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save()}"/>
-				<p:commandButton value="Novo" ajax="true" immediate="true" action="#{cidadeBeanView.novo()}"/>
-			</h:form>		
-		</ui:define>
-	</ui:composition>
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+		<h:form id="formCadastro" prependId="false">
+			<c:set var="isCadastro" value="true" scope="view" />
+			<p:panel header="Cadastro de cidade" id="panelCadastroCidade">
+				<h:panelGrid id="gridCidade" columns="3">
+					<h:outputLabel for="id" value="Código:" id="labelId" />
+					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
+						value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
+					<h:outputLabel value="" />
+
+
+					<h:outputLabel for="cidadeNome" value="Nome *:"
+						id="labelNomeConsultaCidade" />
+					<p:inputText id="cidadeNome" required="true" maxlength="100"
+						requiredMessage="Informe o nome da cidade." styleClass="input"
+						value="#{cidadeBeanView.objetoSelecionado.cid_descricao}" />
+					<p:message for="cidadeNome" />
+
+					<h:outputLabel for="selectEstado" value="Estado *:"
+						id="labelEstado" />
+					<p:selectOneMenu id="selectEstado" required="false"
+						requiredMessage="Informe o estado."
+						value="#{cidadeBeanView.objetoSelecionado.estado}">
+						<f:selectItem itemLabel="Selecione um estado" itemValue="" />
+						<f:selectItems value="#{estadoBeanView.estados}" />
+					</p:selectOneMenu>
+					<h:outputLabel value="" />
+
+			
+				</h:panelGrid>
+			</p:panel>
+
+			<p:commandButton value="Salvar" ajax="false"
+				action="#{cidadeBeanView.save()}" />
+			<p:commandButton value="Novo" ajax="true" immediate="true"
+				action="#{cidadeBeanView.novo()}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
 
 </html>
