@@ -36,18 +36,78 @@
 						<f:selectItem itemLabel="Selecione um estado" itemValue="" />
 						<f:selectItems value="#{estadoBeanView.estados}" />
 					</p:selectOneMenu>
-					<h:outputLabel value="" />
-
-			
+					<p:message for="selectEstado"/>		
 				</h:panelGrid>
 			</p:panel>
+			
+			<div class="espacoBranco"/>
 
 			<p:commandButton value="Salvar" ajax="false"
 				action="#{cidadeBeanView.save()}" />
 			<p:commandButton value="Novo" ajax="true" immediate="true"
 				action="#{cidadeBeanView.novo()}" />
 		</h:form>
+		
+		<div class="espacoBranco"/>
+		
+		<hr/>
+		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="cidade"
+		 emptyMessage="Não existe cidades Cadastradas" rendered="#{cidadeBeanView.list.size() > 0}"
+		 rows="5"
+		 paginator="true"
+		 paginatorPosition="bottom"
+		 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}
+		 					{RowsPerPageDropdown}">
+			<p:column>
+				<center>
+					<f:facet name="header">Código</f:facet>
+					<h:outputText value="#{cidade.cid_codigo}"/>
+				</center>
+			</p:column>
+			
+			<p:column>
+				<center>
+					<f:facet name="header">Cidade</f:facet>
+					<h:outputText value="#{cidade.cid_descricao}"/>
+				</center>
+			</p:column>
+			
+			<p:column>
+				<center>
+					<f:facet name="header">Estado</f:facet>
+					<h:outputText value="#{cidade.estado.est_nome}"/>
+				</center>
+			</p:column>
+			
+			<p:column>
+				<center>
+					<f:facet name="header">Editar</f:facet>
+					<p:commandLink action="#{cidadeBeanView.editar()}" id="editarCidade" value="Editar"
+					 ajax="true" immediate="true" update="@form:formCadastro">
+						<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+					</p:commandLink>
+				</center>
+			</p:column>
+			
+			<p:column>
+				<center>
+					<f:facet name="header">Excluir</f:facet>
+					<p:commandLink action="#{cidadeBeanView.excluir()}" id="excluirCidade" value="Excluir" 
+						ajax="true" immediate="true" update="tableResult">
+						<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+					</p:commandLink>
+				</center>
+			</p:column>
+		</p:dataTable>
+		
+				
+		<script type="text/javascript" charset="UTF-8">
+			addFocoAoCampo("cidadeNome");
+			gerenciaTeclaEnter();
+		</script>
 	</ui:define>
 </ui:composition>
+
+
 
 </html>
