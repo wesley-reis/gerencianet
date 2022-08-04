@@ -12,7 +12,7 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
-			<c:set var="isCadastro" value="true" scope="view" />
+			<c:set var="isCadastro" value="false" scope="view" />
 			<p:panel header="Cadastro de cidade" id="panelCadastroCidade">
 				<h:panelGrid id="gridCidade" columns="3">
 					<h:outputLabel for="id" value="Código:" id="labelId" />
@@ -58,46 +58,9 @@
 		 paginatorPosition="bottom"
 		 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}
 		 					{RowsPerPageDropdown}">
-			<p:column>
-				<center>
-					<f:facet name="header">Código</f:facet>
-					<h:outputText value="#{cidade.cid_codigo}"/>
-				</center>
-			</p:column>
 			
-			<p:column>
-				<center>
-					<f:facet name="header">Cidade</f:facet>
-					<h:outputText value="#{cidade.cid_descricao}"/>
-				</center>
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{cidade.estado.est_nome}"/>
-				</center>
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Editar</f:facet>
-					<p:commandLink action="#{cidadeBeanView.editar()}" id="editarCidade" value="Editar"
-					 ajax="true" immediate="true" update="@form:formCadastro">
-						<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
-					</p:commandLink>
-				</center>
-			</p:column>
-			
-			<p:column>
-				<center>
-					<f:facet name="header">Excluir</f:facet>
-					<p:commandLink action="#{cidadeBeanView.excluir()}" id="excluirCidade" value="Excluir" 
-						ajax="true" immediate="true" update="tableResult">
-						<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
-					</p:commandLink>
-				</center>
-			</p:column>
+			<ui:include src="/resources/components/colunasDataTableCidade.xhtml"/>
+
 		</p:dataTable>
 		
 				
