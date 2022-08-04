@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 
 @Controller
@@ -28,6 +29,18 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	public Date ultimoAcesso() throws Exception {
 		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
+	}
+
+	@Override
+	protected Class<?> getClassImplement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected InterfaceCrud<?> getController() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -41,11 +41,16 @@
 			</p:panel>
 			
 			<div class="espacoBranco"/>
-
-			<p:commandButton value="Salvar" ajax="false"
-				action="#{cidadeBeanView.save()}" />
-			<p:commandButton value="Novo" ajax="true" immediate="true"
-				action="#{cidadeBeanView.novo()}" />
+			
+			<util:botoesCrud managedBeanView="#{cidadeBeanView}" 
+				camposReload=":formTemplate:msg, tableResult"
+				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo == null}"
+				botaoAtualizar="#{contextoBean.possuiAcesso('CIDADE_EDITAR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}"
+				botaoExcluir="#{contextoBean.possuiAcesso('CIDADE_EXCLUIR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}"
+				>
+			</util:botoesCrud>
+			
 		</h:form>
 		
 		<div class="espacoBranco"/>

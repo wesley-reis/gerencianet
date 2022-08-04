@@ -2,7 +2,7 @@ package br.com.project.util.all;
 
 public enum EstatusPersistencia {
 	
-	ERROR("Erro"), SUCESSO("Sucesso"),OBJETO_REFERENCIADO("Esse registro não pode ser apagado por possuir referências ao mesmo.");
+	ERROR("Erro"), SUCESSO("Sucesso"),OBJETO_REFERENCIADO("Esse registro nÃ£o pode ser apagado por possuir referÃªncias ao mesmo.");
 
 	private String name;
 
