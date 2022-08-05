@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.EstadoController;
+import br.com.project.model.classes.Estado;
 
 @Controller
 @Scope(value = "session")
@@ -28,15 +29,13 @@ public class EstadoBeanView extends BeanManagedViewAbstract{
 	}
 
 	@Override
-	protected Class<?> getClassImplement() {
-		// TODO Auto-generated method stub
-		return null;
+	protected Class<Estado> getClassImplement() {
+		return Estado.class;
 	}
 
 	@Override
 	protected InterfaceCrud<?> getController() {
-		// TODO Auto-generated method stub
-		return null;
+		return estadoController;
 	}
 	
 

@@ -6,6 +6,18 @@
 	
 }
 
+.btn{
+	height:40px !important; 
+	width: 100px; 
+	background:#6F2FDE; 
+	border:1px solid #9262E6; 
+	color:#FFF;
+}
+
+.btn:hover{
+	background:#9C58F5; 
+}
+
 .buttonPesquisa {
 	height: 20px;
 	width: 23px;
