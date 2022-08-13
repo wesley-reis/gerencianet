@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form id="formPesquisa" prependId="false">
+	<composite:interface displayName="interfacePesquisa"
+		name="interfacePesquisa">
+		<composite:attribute name="bean" required="true" />
+		<composite:attribute name="ocultaNovo" required="true" />
+		<composite:attribute name="menuImpressao" required="false" default="false" />
+		<composite:attribute name="nomePesquisa" required="true" />
+	</composite:interface>
+
+	<composite:implementation>
+		<c:set var="isCadastro" value="false" scope="view" />
+		
+		<h:panelGrid columns="2">
+		
+			<h:column rendered="#{cc.attrs.ocultaNovo}">
+				<p:commandButton value="Novo" id="buttonNovoRegistro" class="btn" ajax="false" 
+					immediate="true" action="#{cc.attrs.bean.novo()}"/>
+			</h:column>
+		
+			<h:column rendered="#{cc.attrs.menuImpressao}">
+				<util:menuImpressao bean="#{cc.attrs.bean}" />
+			</h:column>
+		</h:panelGrid>
+		<p:spacer height="20px"/>
+		<p:panel id="panelPesquisa" header="#{cc.attrs.nomePesquisa}">
+		
+			<h:panelGrid id="panelGridPesquisa" columns="7">
+				<h:outputLabel for="campo" id="labelCampo" value="Campo: "/>
+				<p:selectOneMenu style="width: 150px;" id="campo" onchange="" value="">
+					<f:selectItems var="campoPesquisaSelecionado" 
+					itemLabel="#{campoPesquisaSelecionado.descricao}"
+					itemValue="#{campoPesquisaSelecionado.tipoClass}"
+					id="itensCampoPesquisa" value="#{cc.attrs.bean.listaCampoPesquisa}">
+						
+					</f:selectItems>
+				</p:selectOneMenu>
+			</h:panelGrid>
+			
+		
+		</p:panel>
+		
+	</composite:implementation>
+</h:form>
+
+</html>

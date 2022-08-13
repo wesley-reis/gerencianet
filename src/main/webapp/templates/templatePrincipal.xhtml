@@ -102,11 +102,14 @@
 				<div id="barramenu">
 					<p:tieredMenu id="menuEsquerdo" style="width:185px; border:none; background:none; color:#000;">
 						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+						
 							<p:submenu label="Cadastros" id="subMenuCadastros">
 								<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
-									<p:menuitem value="Cidade" id="menuCidade" action="/cadastro/cad_cidade.jsf?faces-redirect=true"/>
+									<p:menuitem value="Cidade" id="menuCidade" immediate="true"
+									 action="#{cidadeBeanView.redirecionarFindEntidade()}"/>
 								</sec:ifAnyGranted>
 							</p:submenu>
+							
 						</sec:ifAnyGranted>
 						<p:menuitem onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal')"  value="Início" id="menuinicio" ajax="true"/>
 						
