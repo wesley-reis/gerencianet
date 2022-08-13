@@ -35,6 +35,9 @@ public class CidadeBeanView  extends BeanManagedViewAbstract{
 	
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("ReportCidade");
+		super.setNomeRelatorioSaida("ReportCidade");
+		super.setListDataBeanColletionReport(cidadeController.findList(getClassImplement()));
 		return super.getArquivoReport();
 	}
 	
