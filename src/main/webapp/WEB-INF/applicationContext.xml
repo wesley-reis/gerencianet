@@ -120,9 +120,9 @@
 	
 	<!-- Controler -->
 	<bean  id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl"/>
+	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
 	<!-- 
 	<bean id="interfaceCrud" class="br.com.framework.implementacao.crud.ImplementacaoCrud" scope="singleton" lazy-init="false"/>
-	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
 	<bean id="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
 	<bean id="cidadeController" class="br.com.project.geral.controller.CidadeController" />
 	<bean id="bairroController" class="br.com.project.geral.controller.BairroController" />
