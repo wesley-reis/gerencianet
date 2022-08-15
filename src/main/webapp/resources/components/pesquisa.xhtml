@@ -13,42 +13,104 @@
 		name="interfacePesquisa">
 		<composite:attribute name="bean" required="true" />
 		<composite:attribute name="ocultaNovo" required="true" />
-		<composite:attribute name="menuImpressao" required="false" default="false" />
+		<composite:attribute name="menuImpressao" required="false"
+			default="false" />
 		<composite:attribute name="nomePesquisa" required="true" />
+		<composite:attribute name="colunasGridDataTableList" required="true" />
 	</composite:interface>
 
 	<composite:implementation>
 		<c:set var="isCadastro" value="false" scope="view" />
-		
+
 		<h:panelGrid columns="2">
-		
+
 			<h:column rendered="#{cc.attrs.ocultaNovo}">
-				<p:commandButton value="Novo" id="buttonNovoRegistro" class="btn" ajax="false" 
-					immediate="true" action="#{cc.attrs.bean.novo()}"/>
+				<p:commandButton value="Novo" id="buttonNovoRegistro" class="btn"
+					ajax="false" immediate="true" action="#{cc.attrs.bean.novo()}" />
 			</h:column>
-		
+
 			<h:column rendered="#{cc.attrs.menuImpressao}">
 				<util:menuImpressao bean="#{cc.attrs.bean}" />
 			</h:column>
 		</h:panelGrid>
-		<p:spacer height="20px"/>
+		<p:spacer height="20px" />
 		<p:panel id="panelPesquisa" header="#{cc.attrs.nomePesquisa}">
-		
+
 			<h:panelGrid id="panelGridPesquisa" columns="7">
-				<h:outputLabel for="campo" id="labelCampo" value="Campo: "/>
-				<p:selectOneMenu style="width: 150px;" id="campo" onchange="" value="">
-					<f:selectItems var="campoPesquisaSelecionado" 
-					itemLabel="#{campoPesquisaSelecionado.descricao}"
-					itemValue="#{campoPesquisaSelecionado.tipoClass}"
-					id="itensCampoPesquisa" value="#{cc.attrs.bean.listaCampoPesquisa}">
-						
+				<h:outputLabel for="campo" id="labelCampo" value="Campo: " />
+				<p:selectOneMenu style="width: 150px;" id="campo"
+					onchange="addMascaraPesquisa(this.value)"
+					value="#{cc.attrs.bean.objetoCampoConsultaSelecionado}">
+					<f:selectItems var="campoPesquisaSelecionado"
+						itemLabel="#{campoPesquisaSelecionado.descricao}"
+						itemValue="#{campoPesquisaSelecionado.tipoClass}"
+						id="itensCampoPesquisa"
+						value="#{cc.attrs.bean.listaCampoPesquisa}">
 					</f:selectItems>
 				</p:selectOneMenu>
+
+				<h:outputLabel for="condicao" id="labelCondicao" value="Onde :" />
+				<p:selectOneMenu style="width: 150px;" id="condicao"
+					value="#{cc.attrs.bean.condicaoPesquisaSelecionada}">
+					<f:selectItems id="itensCondicao"
+						value="#{cc.attrs.bean.listaCondicaoPesquisa}">
+					</f:selectItems>
+				</p:selectOneMenu>
+
+				<p:inputText class="input" id="valorPesquisa" immediate="false"
+					onblur="validarCampoPesquisa(event);" maxlength="65"
+					onkeypress="executaPesquisaComEnter(event, this);"
+					value="#{cc.attrs.bean.valorPesquisa}" />
+
+				<p:commandButton id="buttonPesquisar" value="Filtrar" ajax="true"
+					actionListener="#{cc.attrs.bean.consultarEntidade()}"
+					process="@this,panelGridPesquisa"
+					oncomplete="addFocoAoCampo('valorPesquisa')"
+					onsuccess="addFocoAoCampo('valorPesquisa')"
+					update=":formTemplate:msg, tableResult">
+				</p:commandButton>
 			</h:panelGrid>
-			
-		
 		</p:panel>
-		
+
+		<p:spacer />
+
+		<p:dataTable id="tableResult" rendered="true"
+			value="#{cc.attrs.bean.list}" var="objeto" rows="10"
+			widgetVar="tableResult" paginatorPosition="bottom" lazy="true"
+			paginator="true" emptyMessage="Não existem valores para exibição."
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}
+		 					{RowsPerPageDropdown}">
+			<ui:include src="#{cc.attrs.colunasGridDataTableList}"/>
+
+		</p:dataTable>
+
+
+		<script type="text/javascript" charset="UTF-8">
+			var idCampo = getValorElementPorIdJQuery('campo');
+			var idCampoCondicao = getValorElementPorIdJQuery('condicao');
+			var idPesquisa = getValorElementPorIdJQuery('valorPesquisa');
+
+			$(idPesquisa).keypress(permitNumber);
+
+			$(idCampo + ' :nth-child(1)').prop('selected', true);
+			$(idCampoCondicao + ' :nth-child(1)').prop('selected', true);
+			$(idPesquisa).val('');
+
+			addMascaraPesquisa($(idCampo).val());
+
+			addFocoAoCampo('valorPesquisa');
+
+			//chama o pesquisar ao dar enter na pesquisa
+			function executaPesquisaComEnter(event, button) {
+				if (event.keyCode == 13) {
+					event.preventDefault();
+					addFocoAoCampo('buttonPesquisar');
+
+					var buttonPesquisar = getValorElementPorIdJQuery('buttonPesquisar');
+					$(buttonPesquisar).click();
+				}
+			}
+		</script>
 	</composite:implementation>
 </h:form>
 

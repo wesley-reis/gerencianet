@@ -119,6 +119,10 @@ public class CidadeBeanView  extends BeanManagedViewAbstract{
 		return cidadeController;
 	}
 
+	@Override
+	public void consultarEntidade() throws Exception {
+		super.consultarEntidade();
+	}
 	
 	
 }

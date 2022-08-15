@@ -15,8 +15,9 @@
 		<util:pesquisa bean="#{cidadeBeanView}" 
 		menuImpressao="true" 
 		ocultaNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
-		nomePesquisa="Perquisa de Cidade">
-		
+		nomePesquisa="Perquisa de Cidade"
+		colunasGridDataTableList="/resources/components/colunasDataTableCidade.xhtml">
+
 		</util:pesquisa>
 		
 	</ui:define>

@@ -12,21 +12,21 @@
 	<p:column style="width:80px;">
 				<center>
 					<f:facet name="header">Código</f:facet>
-					<h:outputText value="#{cidade.cid_codigo}"/>
+					<h:outputText value="#{objeto.cid_codigo}"/>
 				</center>
 			</p:column>
 			
 			<p:column style="width:500px;">
 				<center>
 					<f:facet name="header">Cidade</f:facet>
-					<h:outputText value="#{cidade.cid_descricao}"/>
+					<h:outputText value="#{objeto.cid_descricao}"/>
 				</center>
 			</p:column>
 			
 			<p:column style="width:300px;">
 				<center>
 					<f:facet name="header">Estado</f:facet>
-					<h:outputText value="#{cidade.estado.est_nome}"/>
+					<h:outputText value="#{objeto.estado.est_nome}"/>
 				</center>
 			</p:column>
 			
@@ -36,9 +36,9 @@
 					
 					<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
 						<p:commandLink action="#{cidadeBeanView.editar()}" id="editarCidade"
-						 ajax="true" immediate="true" update="@form:formCadastro" oncomplete="addFocoCampo('cidadeNome');">
+						 ajax="true" immediate="true" update="@form" oncomplete="addFocoCampo('cidadeNome');">
 						 	<h:graphicImage library="img" name="edit.png"/>
-							<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+							<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}"/>
 						</p:commandLink>
 					</sec:ifAnyGranted>
 					
@@ -47,9 +47,9 @@
 							<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
 								<p:commandLink action="#{cidadeBeanView.excluir()}" id="excluirCidade"
 									ajax="true" immediate="true" update="tableResult" 
-									onclick="if(!confirm('Confirma a exclusão da cidade : #{cidade.cid_descricao}?')) return false;">
+									onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cid_descricao}?')) return false;">
 									<h:graphicImage library="img" name="delete.png"/>
-									<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+									<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}"/>
 								</p:commandLink>
 							</sec:ifAnyGranted>
 						</c:when>
@@ -57,9 +57,9 @@
 							<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
 								<p:commandLink action="#{cidadeBeanView.excluir()}" id="excluirCidade"
 									ajax="false" immediate="true" update="tableResult" 
-									onclick="if(!confirm('Confirma a exclusão da cidade : #{cidade.cid_descricao}?')) return false;">
+									onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.cid_descricao}?')) return false;">
 									<h:graphicImage library="img" name="delete.png"/>
-									<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+									<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}"/>
 								</p:commandLink>
 							</sec:ifAnyGranted>
 						</c:otherwise>
