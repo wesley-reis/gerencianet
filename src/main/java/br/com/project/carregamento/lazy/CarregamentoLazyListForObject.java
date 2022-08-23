@@ -28,12 +28,11 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 			Map<String, String> filters) {
 		
 		try {
-			
 			if (query != null && !query.isEmpty()) {
 				list = (List<T>) controller.findListByQueryDinamica(query, first, pageSize);
 				
 				if (totalRegistroConsulta == 0) {
-					setRowCount(0);
+					setRowCount(list.size());
 				}else {
 					setRowCount(totalRegistroConsulta);
 				}
@@ -75,4 +74,8 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 	public void addAll(List<T> collections) {
 		this.list.addAll(collections);
 	}
+	
+	public Object getRowKey(T object) {
+		return object;
+	};
 }

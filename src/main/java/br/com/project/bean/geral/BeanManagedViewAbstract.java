@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
@@ -34,6 +35,8 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public CondicaoPesquisa condicaoPesquisaSelecionada;
 	
 	public String valorPesquisa;
+	
+	public abstract String condicaoAndParaPesquisa() throws Exception;
 	
 	
 	
@@ -128,5 +131,57 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 			}
 		});
 		
+	}
+
+	public String getSqlLazyQuery() throws Exception {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select entity from ");
+		sql.append(getQueryConsulta());
+		sql.append(" order by entity.");
+		sql.append(objetoCampoConsultaSelecionado.getCampoBanco());
+		return sql.toString();
+	}
+
+	private String getQueryConsulta() throws Exception {
+		valorPesquisa = new UtilitarioRegex().retiraAcentos(valorPesquisa);
+		StringBuilder sql = new StringBuilder();
+		sql.append(getClassImplement().getSimpleName());
+		sql.append(" entity where ");
+		sql.append("retira_acentos(upper(cast(entity.");
+		sql.append(getObjetoCampoConsultaSelecionado().getCampoBanco());
+		sql.append(" as text))) ");
+		
+		if (condicaoPesquisaSelecionada.name().equals(CondicaoPesquisa.IGUAL_A.name())) {
+			sql.append("= retira_acentos(upper('");
+			sql.append(valorPesquisa);
+			sql.append("'))");
+			
+		}else if (condicaoPesquisaSelecionada.name().equals(CondicaoPesquisa.CONTEM.name())) {
+			sql.append(" like retira_acentos(upper('%");
+			sql.append(valorPesquisa);
+			sql.append("%'))");
+
+		}else if (condicaoPesquisaSelecionada.name().equals(CondicaoPesquisa.TERMINA_COM.name())) {
+			sql.append(" like retira_acentos(upper('%");
+			sql.append(valorPesquisa);
+			sql.append("'))");
+
+		}else if (condicaoPesquisaSelecionada.name().equals(CondicaoPesquisa.INICIA_COM.name())) {
+			sql.append(" like retira_acentos(upper('");
+			sql.append(valorPesquisa);
+			sql.append("%'))");
+
+		}
+		
+		sql.append(" ");
+		sql.append(condicaoAndParaPesquisa());
+		
+		return sql.toString();
+	}
+
+	public int totalRegistroConsulta() throws Exception {
+		Query query = getController().obterQuery(" select count(entity) from " + getQueryConsulta());
+		Number result = (Number) query.uniqueResult();
+		return result.intValue();
 	}
 }

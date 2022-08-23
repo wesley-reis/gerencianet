@@ -1,7 +1,7 @@
 package br.com.project.enums;
 
 public enum CondicaoPesquisa {
-	CONTEM("Contém"), INICIA("Inicia com"), TERMINA_COM("Termina com"), IGUAL_A("Igual");
+	CONTEM("Contém"), INICIA_COM("Inicia com"), TERMINA_COM("Termina com"), IGUAL_A("Igual");
 	
 	private String condicao;
 	
